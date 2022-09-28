@@ -23,7 +23,7 @@ export default function Pokedex(){
         setLoaded(true)
     }
 
-    const counter = (num) => setCount(count + ((count + num <= 0 || count + num >= 1154) ? 0 : num)); 
+    const counter = (num) => setCount(count + ((count + num <= 0 || count + num >= 905) ? 0 : num)); 
 
     useEffect(()=>{
         getPokemon(count)

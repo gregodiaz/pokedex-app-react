@@ -8,7 +8,7 @@ function App() {
     <div className="App App-header">
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Main />} />
+        <Route exact path="/pokedex-app-react" element={<Main />} />
       </Routes>
     </BrowserRouter>
     </div>
