@@ -8,7 +8,11 @@ export default function Pokemon({pokemon, loaded}){
             <div className="d-flex flex-column">
                 <img 
                     src={pokemon.sprite} 
-                    style={{ maxHeight: '100px', maxWidth: '100px', backgroundColor: 'rgba(255,0,0,0.1)', }}
+                    style={{ 
+                        maxHeight: '100px',
+                        maxWidth: '100px',
+                        top: '100px',
+                    }}
                 />
                 <span>{pokemon.name}</span>
                 {pokemon.types.map(type => (
