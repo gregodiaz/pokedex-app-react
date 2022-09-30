@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Pokedex from "../Pokedex";
+import Pokedex from "../../functionals/Pokedex";
 
 export default function Main(){
 
