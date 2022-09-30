@@ -15,10 +15,10 @@ import Switch from '../../presentionals/Switch';
 
 import colors from '../../../constants/colors';
 
-export default function Pokedex(){
+export default function Pokedex() {
     const url = 'https://pokeapi.co/api/v2/pokemon/';
 
-    const [pokemon , setPokemon] = useState();
+    const [pokemon, setPokemon] = useState();
 
     const [loaded, setLoaded] = useState(false)
     const [info, setInfo] = useState(false)
@@ -28,7 +28,7 @@ export default function Pokedex(){
     const [idSearch, setIdSearch] = useState('')
     const [nameSearch, setNameSearch] = useState('')
 
-    const getPokemon = async(pokemonId) => {
+    const getPokemon = async (pokemonId) => {
         const res = await fetch(url + pokemonId);
         const data = await res.json();
         const { id, name, order, weight, height, sprites, stats, types, abilities, moves } = data
@@ -36,92 +36,89 @@ export default function Pokedex(){
         const spriteResponse = await fetch(sprites.front_default)
         const sprite = spriteResponse.url
 
-        setPokemon({id, name, order, weight, height, sprite, stats, types, abilities, moves});
+        setPokemon({ id, name, order, weight, height, sprite, stats, types, abilities, moves });
         setLoaded(true)
     }
 
-    const addToId = (num) => setCurrentId(currentId + ((currentId + num <= 0 || currentId + num >= 906) ? 0 : num)); 
-    const format = (num) => ((num >= 10 ? '0' : '00' ) + num)
+    const addToId = (num) => setCurrentId(currentId + ((currentId + num <= 0 || currentId + num >= 906) ? 0 : num));
+    const format = (num) => ((num >= 10 ? '0' : '00') + num)
 
-    const mapper = (arr, prop, propn = 'name') => 
+    const mapper = (arr, prop, propn = 'name') =>
         arr.map((elem, index) => <div>{index + 1 + ' . ' + elem[prop][propn]}</div>)
 
-    const isLoaded = ( value, opt = '' ) => loaded ? value : opt;
-
+    const isLoaded = (value, opt = '') => loaded ? value : opt;
     const handleIdSearch = event => setIdSearch(event.target.value)
     const handleNameSearch = event => setNameSearch(event.target.value)
-
     const handleIdSubmit = event => {
         event.preventDefault()
-        event.target.firstChild.value=''
+        event.target.firstChild.value = ''
         setIdSearch('')
 
         console.log(event.target.firstChild.value)
     }
-
     const handleNameSubmit = event => {
         event.preventDefault()
-        event.target.firstChild.value=''
+        event.target.firstChild.value = ''
         setNameSearch('')
 
         console.log(event.target.firstChild.value)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getPokemon(currentId)
-    },[currentId]);
-    
+    }, [currentId]);
+
     return (
-        <div className="position-relative" style={{ height: '66vmin', width: '90vmin'}}>
-            <BgImage 
+        <div className="position-relative" style={{ height: '66vmin', width: '90vmin' }}>
+            <BgImage
                 h={'663px'}
                 w={'912px'}
                 position={'relative'}
-                src={ process.env.PUBLIC_URL + isLoaded('/Pokedex.png','/PokedexOff.png') }
+                src={process.env.PUBLIC_URL + isLoaded('/Pokedex.png', '/PokedexOff.png')}
             />
-            
+
             {/* PowerOn button */}
-            <Button 
+            <Button
                 top={'466px'}
                 left={'46px'}
                 border={'0px'}
-                onClick={()=>setLoaded(!loaded)}
+                onClick={() => setLoaded(!loaded)}
             />
 
             {/* Sprite img */}
-            { 
+            {
                 loaded ? (
-                    <Sprite 
-                        top={'296px'}    
-                        left={'231px'}    
-                        src={pokemon.sprite} 
-                    /> 
+                    <Sprite
+                        top={'296px'}
+                        left={'231px'}
+                        src={pokemon.sprite}
+                    />
                 ) : ''
             }
 
             {/* Search by Id input */}
-            <form onSubmit={ handleIdSubmit }>
+            <form onSubmit={handleIdSubmit}>
                 <Search
-                    w={ '88px' }
-                    top={ '495px' }
-                    left={ '179px' }
+                    w={'88px'}
+                    top={'495px'}
+                    left={'179px'}
                     disabled={!loaded}
-                    value={ isLoaded( idSearch ) }
-                    placeholder={ loaded ? ( format(pokemon.id) ) : '' }
-                    onChange={ handleIdSearch }
+                    value={isLoaded(idSearch)}
+                    placeholder={loaded ? (format(pokemon.id)) : ''}
+                    onChange={handleIdSearch}
                 />
             </form>
 
             {/* Search by Name input */}
-            <form onSubmit={ handleNameSubmit }>
+            <form onSubmit={handleNameSubmit}>
                 <Search
-                    w={'180px' }
+                    w={'180px'}
                     top={'546px'}
                     left={'86px'}
                     disabled={!loaded}
-                    value={ isLoaded( nameSearch ) }
-                    placeholder={ loaded ? ( pokemon.name ) : '' }
-                    onChange={ handleNameSearch }
+                    value={isLoaded(nameSearch)}
+                    placeholder={loaded ? (pokemon.name) : ''}
+                    onChange={handleNameSearch}
                 />
             </form>
 
@@ -131,16 +128,16 @@ export default function Pokedex(){
                 bgColor={colors.blue}
                 top={'499px'}
                 left={'740px'}
-                onClick={()=>{ setInfo(!info)}}
-            > 
-                { isLoaded(info ? '?' : '!') }
+                onClick={() => { setInfo(!info) }}
+            >
+                {isLoaded(info ? '?' : '!')}
             </Button>
 
             <Switch addToId={addToId} loaded={loaded} />
-            <Info pokemon={loaded ? pokemon : ''} loaded={loaded} info={info}/>
-            <Stats pokemon={loaded ? pokemon : ''} loaded={loaded}/>
+            <Info pokemon={loaded ? pokemon : ''} loaded={loaded} info={info} />
+            <Stats pokemon={loaded ? pokemon : ''} loaded={loaded} />
             <Types pokemon={loaded ? pokemon : ''} loaded={loaded} />
-            <Body pokemon={loaded ? pokemon : ''} loaded={loaded}/>
+            <Body pokemon={loaded ? pokemon : ''} loaded={loaded} />
 
         </div>
     )

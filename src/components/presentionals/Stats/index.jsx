@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import StatsPanel from '../../styled-components/StatsPanel';
 
-export default function Stats({pokemon, loaded}){
-    
+export default function Stats({ pokemon, loaded }) {
+
     return (
         <div>
             <StatsPanel top={'376px'} left={'543px'} >

@@ -4,12 +4,12 @@ import StatsPanel from '../../styled-components/StatsPanel';
 
 import colors from '../../../constants/colors';
 
-export default function Info({pokemon, loaded, info}){
-    
-    const mapper = (arr, prop, propn = 'name') => 
+export default function Info({ pokemon, loaded, info }) {
+
+    const mapper = (arr, prop, propn = 'name') =>
         arr.map((elem, index) => <div>{index + 1 + ' . ' + elem[prop][propn]}</div>)
 
-    const isLoaded = ( value, opt = '' ) => loaded ? value : opt;
+    const isLoaded = (value, opt = '') => loaded ? value : opt;
 
     return (
         <div>
@@ -24,9 +24,9 @@ export default function Info({pokemon, loaded, info}){
             >
                 {
                     pokemon !== '' ? (
-                            info ?
-                                pokemon.moves.length + ' Moves Availables:':
-                                pokemon.abilities.length + ' Abilities Availables:'
+                        info ?
+                            pokemon.moves.length + ' Moves Availables:' :
+                            pokemon.abilities.length + ' Abilities Availables:'
                     ) : ''
                 }
             </StatsPanel>
@@ -45,11 +45,11 @@ export default function Info({pokemon, loaded, info}){
             >
                 {
                     pokemon !== '' ? (
-                        isLoaded( 
+                        isLoaded(
                             info ?
-                            mapper(pokemon.moves, 'move') :
-                            mapper(pokemon.abilities, 'ability')
-                        ) 
+                                mapper(pokemon.moves, 'move') :
+                                mapper(pokemon.abilities, 'ability')
+                        )
                     ) : ''
                 }
             </StatsPanel>
