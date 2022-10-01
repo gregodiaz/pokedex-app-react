@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Button from '../../styled-components/Button';
 
-export default function Switch({ addToId, loaded }) {
+export default function Switch({ prev, next, loaded }) {
 
     return (
         <div>
@@ -11,7 +11,7 @@ export default function Switch({ addToId, loaded }) {
                 left='29.1vmin'
                 size='4vmin'
                 border='0px'
-                onClick={() => { if (loaded) addToId(-1) }}
+                onClick={() => { if (loaded) prev() }}
             >
                 ◀
             </Button>
@@ -21,7 +21,7 @@ export default function Switch({ addToId, loaded }) {
                 left='36.6vmin'
                 size='4vmin'
                 border='0px'
-                onClick={() => { if (loaded) addToId(1) }}
+                onClick={() => { if (loaded) next() }}
             >
                 ▶
             </Button>

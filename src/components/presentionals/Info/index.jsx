@@ -5,7 +5,7 @@ import InfoPanel from '../../styled-components/InfoPanel';
 export default function Info({ pokemon, loaded, info }) {
 
     const mapper = (arr, prop, propn = 'name') =>
-        arr.map((elem, index) => <div>{index + 1 + ' . ' + elem[prop][propn]}</div>)
+        arr.map((elem, index) => <div key={index}>{index + 1 + ' . ' + elem[prop][propn]}</div>)
 
     const isLoaded = (value, opt = '') => loaded ? value : opt;
 

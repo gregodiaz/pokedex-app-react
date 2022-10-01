@@ -21,7 +21,7 @@ const Search = styled.input`
     font-size: ${props => props.fontSize};
 
     &:focus {
-        // outline: none;
+        outline: .3vmin solid ${colors.darkGreen};
     }
     
     ::placeholder {
