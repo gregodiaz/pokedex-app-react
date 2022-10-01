@@ -1,0 +1,17 @@
+import React, { useEffect, useState } from "react";
+
+import Pokedex from '../../presentionals/Pokedex';
+
+import pokemonStore from '../../../store/pokemonStore';
+
+export default function ApiData() {
+    const { pokemon, fetchPokemon } = pokemonStore();
+
+    useEffect(() => {
+        fetchPokemon(1)
+    }, []);
+
+    return (
+        <Pokedex />
+    )
+};

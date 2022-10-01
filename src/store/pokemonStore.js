@@ -10,7 +10,7 @@ const pokemonStore = create(set => ({
         const response = await fetch(url + id);
         const data = await response.json();
 
-        const spriteResponse = await fetch(data.sprites.front_default)
+        const spriteResponse = await fetch(data.sprites['front_default'])
         const sprite = spriteResponse.url
 
         set({ pokemon: { ...data, sprite } })

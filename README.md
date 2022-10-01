@@ -1,18 +1,21 @@
 # Pokedex App with React!
+A graphical interface of [PokeApi](https://pokeapi.co/).
 
-## Initialization 
+This is my first approach to an API, so please be patient.
 
-To start the project you have to run the following commands in bash:
+## The Page!
+See the project in action [here!](https://gregodiaz.github.io/pokedex-app-react/)
 
-1. clone the repository 
+or here -> https://gregodiaz.github.io/pokedex-app-react/
+
+## Download Code 
+To see or test the code for yourself run in bash:
 ```bash
 git clone https://github.com/gregodiaz/pokedex-app-react.git && cd pokedex-app-react
 ```
-2. install the dependencies
 ```bash
 npm i
 ```
-3. start the project
 ```bash
 npm start
 ```
