@@ -6,16 +6,16 @@ const pokemonStore = create(set => ({
     pokemon: {},
     loaded: false,
 
-    fetchPokemon: async id => {
-        const response = await fetch(url + id);
-        const data = await response.json();
+    // fetchPokemon: async id => {
+    //     const response = await fetch(url + id);
+    //     const data = await response.json();
 
-        const spriteResponse = await fetch(data.sprites.front_default)
-        const sprite = spriteResponse.url
+    //     const spriteResponse = await fetch(data.sprites.front_default)
+    //     const sprite = spriteResponse.url
 
-        set({ pokemon: { ...data, sprite } })
-        set({ loaded: true })
-    },
+    //     set({ pokemon: { ...data, sprite } })
+    //     set({ loaded: true })
+    // },
 }));
 
 export default pokemonStore;
