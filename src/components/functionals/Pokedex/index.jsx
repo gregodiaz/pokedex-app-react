@@ -68,9 +68,11 @@ export default function Pokedex() {
                 // onClick={() => setLoaded(!loaded)}
             />
 
+
             {loaded ?
                 <Sprite src={pokemon.sprite} />
                 : ''}
+
 
             {/* Search by Id input */}
             <form onSubmit={handleIdSubmit}>
