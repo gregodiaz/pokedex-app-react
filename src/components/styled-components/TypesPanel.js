@@ -4,10 +4,10 @@ import colors from '../../constants/colors'
 
 const TypesPanel = styled.div`
     position: absolute;
-    height: 43px;
-    width: 169px;
+    height: 3.5vmin;
+    width: 18vmin;
     border-radius: 5px;
-    font-size: 1.5rem ;
+    font-size: 2.5vmin;
     font-weight: bold ;
     text-align: center ;
     font-family:'Titillium Web';

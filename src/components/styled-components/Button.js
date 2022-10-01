@@ -4,9 +4,12 @@ const Button = styled.button`
     position: absolute;
     cursor: pointer;
     background: #00000000;
-    height: 58px;
-    width: 58px;
+    height: 6vmin;
+    width: 6vmin;
     border-radius: 50%;
+    font-size: 2.7vmin;
+    border: none;
+    padding-top: 0;
 
     background: ${props => props.bgColor};
     height: ${props => props.size};

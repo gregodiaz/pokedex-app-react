@@ -4,16 +4,16 @@ import colors from '../../constants/colors'
 
 const BodyPanel = styled.div`
     position: absolute;
-    height: 43px;
-    width: 150px;
-    border-radius: 5px;
-    font-size: 1.5rem ;
+    height: 3.5vmin;
+    width: 16vmin;
+    border-radius: .7vmin;
+    font-size: 2vmin;
     font-weight: bold ;
     text-align: center ;
     font-family:'Titillium Web';
 
     background: ${colors.darkGreen};
-    border: 1px solid ${colors.yellow};
+    border: .3vmin solid ${colors.yellow};
     color: ${colors.yellow};
 
     top: ${props => props.top};

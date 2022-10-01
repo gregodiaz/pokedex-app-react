@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import colors from '../../constants/colors'
 
 const Search = styled.input`
-    height: 44px;
-    padding-right: 10px;
+    height: 4.3vmin;
+    padding-right: .5vmin;
     position: absolute;
-    border: 2px solid gray;
+    border: .1vmin solid gray;
     border-radius: 5px;
     text-align: right;
-    font-size: 1.5rem;
-    font-family:'Titillium Web';
+    font-size: 3.5vmin;
+    font-family: 'Titillium Web';
 
     background: ${colors.lightGreen};
     color: ${colors.darkGreen};
@@ -21,7 +21,7 @@ const Search = styled.input`
     font-size: ${props => props.fontSize};
 
     &:focus {
-        // outline: none;
+        outline: .3vmin solid ${colors.darkGreen};
     }
     
     ::placeholder {
