@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import StatsPanel from '../../styled-components/StatsPanel';
-
-import BgImage from '../../styled-components/BgImage';
+import PokedexDiv from '../../styled-components/PokedexDiv';
+import PokedexImg from '../../styled-components/PokedexImg';
 import Sprite from '../../styled-components/Sprite';
 import Button from '../../styled-components/Button';
 import Search from '../../styled-components/Search';
@@ -43,25 +42,23 @@ export default function Pokedex() {
     const addToId = (num) => setCurrentId(currentId + ((currentId + num <= 0 || currentId + num >= 906) ? 0 : num));
     const format = (num) => ((num >= 10 ? '0' : '00') + num)
 
-    const mapper = (arr, prop, propn = 'name') =>
-        arr.map((elem, index) => <div>{index + 1 + ' . ' + elem[prop][propn]}</div>)
+    const isLoaded = (pokemon, opt = '') => loaded ? pokemon : opt;
+    const pokemonLoaded = loaded ? pokemon : ''
 
-    const isLoaded = (value, opt = '') => loaded ? value : opt;
     const handleIdSearch = event => setIdSearch(event.target.value)
     const handleNameSearch = event => setNameSearch(event.target.value)
+
     const handleIdSubmit = event => {
         event.preventDefault()
+        console.log(event.target.firstChild.value)
         event.target.firstChild.value = ''
         setIdSearch('')
-
-        console.log(event.target.firstChild.value)
     }
     const handleNameSubmit = event => {
         event.preventDefault()
+        console.log(event.target.firstChild.value)
         event.target.firstChild.value = ''
         setNameSearch('')
-
-        console.log(event.target.firstChild.value)
     }
 
     useEffect(() => {
@@ -69,42 +66,32 @@ export default function Pokedex() {
     }, [currentId]);
 
     return (
-        <div className="position-relative" style={{ height: '66vmin', width: '90vmin' }}>
-            <BgImage
-                h={'663px'}
-                w={'912px'}
-                position={'relative'}
+
+        <PokedexDiv>
+            <PokedexImg
                 src={process.env.PUBLIC_URL + isLoaded('/Pokedex.png', '/PokedexOff.png')}
             />
 
             {/* PowerOn button */}
             <Button
-                top={'466px'}
-                left={'46px'}
-                border={'0px'}
+                top='46.45vmin'
+                left='4.44vmin'
                 onClick={() => setLoaded(!loaded)}
             />
 
-            {/* Sprite img */}
-            {
-                loaded ? (
-                    <Sprite
-                        top={'296px'}
-                        left={'231px'}
-                        src={pokemon.sprite}
-                    />
-                ) : ''
-            }
+            { loaded ?
+                <Sprite src={pokemon.sprite} />
+            : ''}
 
             {/* Search by Id input */}
             <form onSubmit={handleIdSubmit}>
                 <Search
-                    w={'88px'}
-                    top={'495px'}
-                    left={'179px'}
+                    w='10vmin'
+                    top='49vmin'
+                    left='17vmin'
                     disabled={!loaded}
                     value={isLoaded(idSearch)}
-                    placeholder={loaded ? (format(pokemon.id)) : ''}
+                    placeholder={loaded ? '#' + (format(pokemon.id)) : ''}
                     onChange={handleIdSearch}
                 />
             </form>
@@ -112,9 +99,9 @@ export default function Pokedex() {
             {/* Search by Name input */}
             <form onSubmit={handleNameSubmit}>
                 <Search
-                    w={'180px'}
-                    top={'546px'}
-                    left={'86px'}
+                    w='22vmin'
+                    top='54.4vmin'
+                    left='5vmin'
                     disabled={!loaded}
                     value={isLoaded(nameSearch)}
                     placeholder={loaded ? (pokemon.name) : ''}
@@ -124,10 +111,12 @@ export default function Pokedex() {
 
             {/* Switch Info button */}
             <Button
-                size={'43px'}
+                size={'5vmin'}
                 bgColor={colors.blue}
-                top={'499px'}
-                left={'740px'}
+                top={'51vmin'}
+                left={'73.4vmin'}
+                border={'.3vmin solid ' + colors.sky}
+                disabled={!loaded}
                 onClick={() => { setInfo(!info) }}
             >
                 {isLoaded(info ? '?' : '!')}
@@ -139,6 +128,6 @@ export default function Pokedex() {
             <Types pokemon={loaded ? pokemon : ''} loaded={loaded} />
             <Body pokemon={loaded ? pokemon : ''} loaded={loaded} />
 
-        </div>
+        </PokedexDiv>
     )
 };

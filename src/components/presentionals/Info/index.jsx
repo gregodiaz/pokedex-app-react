@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import StatsPanel from '../../styled-components/StatsPanel';
-
-import colors from '../../../constants/colors';
+import InfoPanel from '../../styled-components/InfoPanel';
 
 export default function Info({ pokemon, loaded, info }) {
 
@@ -13,15 +11,7 @@ export default function Info({ pokemon, loaded, info }) {
 
     return (
         <div>
-            <StatsPanel
-                top={'216px'}
-                left={'543px'}
-                h={'43px'}
-                w={'300px'}
-                color={colors.yellow}
-                bgColor={colors.darkGreen}
-                borderColor={colors.yellow}
-            >
+            <InfoPanel>
                 {
                     pokemon !== '' ? (
                         info ?
@@ -29,19 +19,13 @@ export default function Info({ pokemon, loaded, info }) {
                             pokemon.abilities.length + ' Abilities Availables:'
                     ) : ''
                 }
-            </StatsPanel>
+            </InfoPanel>
 
-            <StatsPanel
-                top={'258px'}
-                left={'543px'}
-                h={'100px'}
-                w={'300px'}
-                color={colors.yellow}
-                bgColor={colors.darkGreen}
-                borderColor={colors.yellow}
-                overflow={'scroll'}
-                fontSize={'1.3rem'}
-                textAlign={'left'}
+            <InfoPanel
+                top='24.5vmin'
+                h='15vmin'
+                pl='1.5vmin'
+                textAlign='left'
             >
                 {
                     pokemon !== '' ? (
@@ -52,7 +36,7 @@ export default function Info({ pokemon, loaded, info }) {
                         )
                     ) : ''
                 }
-            </StatsPanel>
+            </InfoPanel>
         </div>
     )
 };

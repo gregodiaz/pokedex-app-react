@@ -8,11 +8,11 @@ export default function Body({ pokemon, loaded }) {
 
     return (
         <div>
-            <BodyPanel top={'576px'} left={'543px'} >
+            <BodyPanel top='58vmin' left='53.2vmin' >
                 {isLoaded('w: ' + pokemon.weight / 10 + 'kg')}
             </BodyPanel>
 
-            <BodyPanel top={'576px'} left={'693px'} >
+            <BodyPanel top='58vmin' left='69.3vmin' >
                 {isLoaded('h: ' + pokemon.height / 10 + 'm')}
             </BodyPanel>
         </div>
