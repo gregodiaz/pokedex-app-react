@@ -7,13 +7,11 @@ import pokemonStore from '../../../../store/pokemonStore';
 
 export default function ChangePokemonButtons() {
     const { isOn } = booleansStore();
-    // const { pokemon, loaded, fetchPokemon } = pokemonStore();
+    const { pokemon, loaded, fetchPokemon } = pokemonStore();
 
-    // const prev = () => fetchPokemon( pokemon.id > 1 ? pokemon.id - 1 : 905);
-    // const next = () => fetchPokemon( pokemon.id < 905 ? pokemon.id + 1 : 1);
+    const prev = () => fetchPokemon( pokemon.id > 1 ? pokemon.id - 1 : 905);
+    const next = () => fetchPokemon( pokemon.id < 905 ? pokemon.id + 1 : 1);
 
-                // onClick={() => { if (isOn && loaded) prev() }}
-                // onClick={() => { if (isOn && loaded) next() }}
     return (
         <div>
             <Button
@@ -21,6 +19,7 @@ export default function ChangePokemonButtons() {
                 left='29.1vmin'
                 size='4vmin'
                 border='0px'
+                onClick={() => { if (isOn && loaded) prev() }}
             >
                 ◀
             </Button>
@@ -30,6 +29,7 @@ export default function ChangePokemonButtons() {
                 left='36.6vmin'
                 size='4vmin'
                 border='0px'
+                onClick={() => { if (isOn && loaded) next() }}
             >
                 ▶
             </Button>

@@ -3,15 +3,18 @@ import React, { useEffect, useState } from "react";
 import Pokemon from '../../../styled-components/sprites/Pokemon';
 
 import booleansStore from '../../../../store/booleansStore';
+import pokemonStore from '../../../../store/pokemonStore';
 
 export default function PokemonSprite() {
     const { isOn } = booleansStore();
+    const { pokemon, loaded } = pokemonStore();
 
     return (
-        <Pokemon
-            src={`${process.env.PUBLIC_URL}/images/Pokedex${isOn ? '' : 'Off'}.png`}
-        />
-
+        <div>
+            {isOn && loaded ?
+                <Pokemon src={pokemon.sprite} />
+                : ''}
+        </div>
     )
 };
 

@@ -14,7 +14,7 @@ export default function InfoPanel() {
 
     return (
         <div>
-            <InfoPanel>
+            <Info>
                 {
                     loaded && isOn ?
                         (moreInfo ?
@@ -22,9 +22,9 @@ export default function InfoPanel() {
                             pokemon.abilities.length + ' Abilities Availables:'
                         ) : ''
                 }
-            </InfoPanel>
+            </Info>
 
-            <InfoPanel
+            <Info
                 top='24.5vmin'
                 h='15vmin'
                 pl='1.5vmin'
@@ -37,7 +37,7 @@ export default function InfoPanel() {
                             mapper(pokemon.abilities, 'ability')
                         ) : ''
                 }
-            </InfoPanel>
+            </Info>
         </div>
     )
 };

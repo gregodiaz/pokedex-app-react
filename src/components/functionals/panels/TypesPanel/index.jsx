@@ -11,13 +11,13 @@ export default function TypesPanel() {
 
     return (
         <div>
-            <TypesPanel top='50vmin' left='53.2vmin' >
+            <Types top='50vmin' left='53.2vmin' >
                 {loaded && isOn ? (pokemon.types[0].type.name) : ''}
-            </TypesPanel>
+            </Types>
 
-            <TypesPanel top='53.4vmin' left='53.2vmin' >
+            <Types top='53.4vmin' left='53.2vmin' >
                 {loaded && isOn && pokemon.types[1] ? pokemon.types[1].type.name : ''}
-            </TypesPanel>
+            </Types>
         </div>
     )
 };

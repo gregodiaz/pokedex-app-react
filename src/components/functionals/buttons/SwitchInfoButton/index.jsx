@@ -20,7 +20,7 @@ export default function SwitchInfoButton() {
                 color={ colors[isOn && moreInfo ? 'light' : 'dark']}
                 brightness={ isOn && moreInfo? 3 : .5}
                 disabled={!isOn}
-                // onClick={() => switchMoreInfo()}
+                onClick={() => switchMoreInfo()}
             >
             !
             </Toggle>

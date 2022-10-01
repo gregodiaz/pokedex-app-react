@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import PokedexDiv from '../../styled-components/PokedexDiv';
 
 // import sprites
-import PokemonSprite from '../../functionals/sprites/PokedexSprite';
+import PokemonSprite from '../../functionals/sprites/PokemonSprite';
 import PokedexSprite from '../../functionals/sprites/PokedexSprite';
 
 // import buttons
@@ -24,9 +24,10 @@ import NameSearchInput from '../../functionals/inputs/NameSearchInput';
 export default function Pokedex() {
     return (
         <PokedexDiv>
+
             {/* sprites */}
-            <PokemonSprite />
             <PokedexSprite />
+            <PokemonSprite />
 
             {/* buttons */}
             <SwitchPowerButton />
@@ -42,6 +43,7 @@ export default function Pokedex() {
             {/* inputs */}
             <IdSearchInput />
             <NameSearchInput />
+
         </PokedexDiv>
     )
 };

@@ -5,10 +5,10 @@ import Pokedex from '../../presentionals/Pokedex';
 import pokemonStore from '../../../store/pokemonStore';
 
 export default function ApiData() {
-    // const { fetchPokemon } = pokemonStore();
+    const { pokemon, fetchPokemon } = pokemonStore();
 
     useEffect(() => {
-        // fetchPokemon(1)
+        fetchPokemon(1)
     }, []);
 
     return (
