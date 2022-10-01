@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 
 import InfoPanel from '../../styled-components/InfoPanel';
 
-export default function Info({ pokemon, loaded, info }) {
+import infoPanelStore from '../../../store/infoPanelStore';
+import powerOnStore from '../../../store/powerOnStore';
+import pokemonStore from '../../../store/pokemonStore';
+
+export default function Info() {
+    const { isOn } = powerOnStore();
+    const { info } = infoPanelStore();
+    const { pokemon, loaded } = pokemonStore();
 
     const mapper = (arr, prop, propn = 'name') =>
         arr.map((elem, index) => <div key={index}>{index + 1 + ' . ' + elem[prop][propn]}</div>)
-
-    const isLoaded = (value, opt = '') => loaded ? value : opt;
 
     return (
         <div>
             <InfoPanel>
                 {
-                    pokemon !== '' ? (
-                        info ?
+                    loaded && isOn ?
+                        (info ?
                             pokemon.moves.length + ' Moves Availables:' :
                             pokemon.abilities.length + ' Abilities Availables:'
-                    ) : ''
+                        ) : ''
                 }
             </InfoPanel>
 
@@ -28,13 +33,11 @@ export default function Info({ pokemon, loaded, info }) {
                 textAlign='left'
             >
                 {
-                    pokemon !== '' ? (
-                        isLoaded(
-                            info ?
-                                mapper(pokemon.moves, 'move') :
-                                mapper(pokemon.abilities, 'ability')
-                        )
-                    ) : ''
+                    loaded && isOn ?
+                        (info ?
+                            mapper(pokemon.moves, 'move') :
+                            mapper(pokemon.abilities, 'ability')
+                        ) : ''
                 }
             </InfoPanel>
         </div>
