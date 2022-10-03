@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import PokedexDiv from '../../styled-components/PokedexDiv';
 
@@ -12,6 +12,8 @@ import SwitchInfoButton from '../../functionals/buttons/SwitchInfoButton';
 import SwitchVariantButton from '../../functionals/buttons/SwitchVariantButton';
 import ChangePokemonButtons from '../../functionals/buttons/ChangePokemonButtons';
 import ChangeProfileButtons from '../../functionals/buttons/ChangeProfileButtons';
+
+import NewButton from '../../presentionals/buttons/Toggle'
 
 // import panels
 import TypesPanel from '../../functionals/panels/TypesPanel';
@@ -37,6 +39,7 @@ export default function Pokedex() {
             <SwitchVariantButton />
             <ChangePokemonButtons />
             <ChangeProfileButtons />
+            <NewButton />
 
             {/* panels */}
             <InfoPanel />

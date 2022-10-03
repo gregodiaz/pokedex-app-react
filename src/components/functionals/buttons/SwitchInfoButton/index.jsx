@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Toggle from '../../../styled-components/buttons/Toggle';
+import Toggle from '../../../presentionals/buttons/Toggle'
 
 import colors from '../../../../constants/colors';
 
@@ -12,17 +12,13 @@ export default function SwitchInfoButton() {
     return (
         <div>
             <Toggle
-                size={'5vmin'}
-                top={'51vmin'}
-                left={'73.4vmin'}
-                border={'.3vmin solid ' + colors.sky}
+                top={51}
+                left={73.4}
                 bgColor={colors.blue}
-                color={ colors[isOn && moreInfo ? 'light' : 'dark']}
-                brightness={ isOn && moreInfo? 3 : .5}
                 disabled={!isOn}
                 onClick={() => switchMoreInfo()}
             >
-            !
+                !
             </Toggle>
         </div>
     )
