@@ -18,6 +18,7 @@ const Toggle = styled.button`
     border-radius: ${props => props.borderRadius};
     border: ${props => props.border};
     color: ${props => props.color};
+    font-size: ${props => props.fontSize};
     filter: brightness(${props => props.brightness}); 
 
     top: ${props => props.top};

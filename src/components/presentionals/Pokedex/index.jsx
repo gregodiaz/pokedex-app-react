@@ -9,7 +9,9 @@ import PokedexSprite from '../../functionals/sprites/PokedexSprite';
 // import buttons
 import SwitchPowerButton from '../../functionals/buttons/SwitchPowerButton';
 import SwitchInfoButton from '../../functionals/buttons/SwitchInfoButton';
+import SwitchVariantButton from '../../functionals/buttons/SwitchVariantButton';
 import ChangePokemonButtons from '../../functionals/buttons/ChangePokemonButtons';
+import ChangeProfileButtons from '../../functionals/buttons/ChangeProfileButtons';
 
 // import panels
 import TypesPanel from '../../functionals/panels/TypesPanel';
@@ -32,7 +34,9 @@ export default function Pokedex() {
             {/* buttons */}
             <SwitchPowerButton />
             <SwitchInfoButton />
+            <SwitchVariantButton />
             <ChangePokemonButtons />
+            <ChangeProfileButtons />
 
             {/* panels */}
             <InfoPanel />
