@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Info from '../../../styled-components/panels/Info';
+import Info from './style';
 
 import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
@@ -29,6 +29,7 @@ export default function InfoPanel() {
                 h='15vmin'
                 pl='1.5vmin'
                 textAlign='left'
+                overflow='auto'
             >
                 {
                     loaded && isOn ?

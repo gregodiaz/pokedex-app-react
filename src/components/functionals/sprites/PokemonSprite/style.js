@@ -11,3 +11,4 @@ const Pokemon = styled.img`
 `;
 
 export default Pokemon;
+

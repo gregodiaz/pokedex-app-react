@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import colors from '../../../constants/colors'
+import colors from '../../../../constants/colors'
 
 const Physical = styled.div`
     position: absolute;

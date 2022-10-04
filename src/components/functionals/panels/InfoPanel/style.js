@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
-import colors from '../../../constants/colors'
+import colors from '../../../../constants/colors'
 
 const Info = styled.div`
-    position: absolute;
-    height: 5vmin;
-    width: 33vmin;
     border-radius: 5px;
-    top: 19.5vmin;
-    left: 53vmin;
+    font-family:'Titillium Web';
     font-size: 3vmin;
     font-weight: bold ;
-    font-family:'Titillium Web';
+    height: 5vmin;
+    left: 53vmin;
+    position: absolute;
     text-align: center ;
-    overflow: scroll;
+    top: 19.5vmin;
+    width: 33vmin;
 
     background: ${colors.darkGreen};
     border: .3vmin solid ${colors.yellow};
     color: ${colors.yellow};
 
     top: ${props => props.top};
+    overflow: ${props => props.overflow};
     height: ${props => props.h};
     text-align: ${props => props.textAlign};
     padding-left: ${props => props.pl};

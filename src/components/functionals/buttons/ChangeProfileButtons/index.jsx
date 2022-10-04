@@ -1,37 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Button from '../../../styled-components/buttons/Button';
+import ArrowButton from '../../../presentionals/ArrowButton'
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
 
-export default function ChangePokemonButtons() {
-    const { isOn } = booleansStore();
-    const { profile, variant, loaded, fetchSprite } = pokemonStore();
+import colors from '../../../../constants/colors'
 
-    const changeProfile = () => fetchSprite( profile === 'front' ? 'back' : 'front', variant);
+export default function ChangePokemonButtons() {
+    const { profile, variant, fetchSprite } = pokemonStore();
+
+    const changeProfile = () => fetchSprite(profile === 'front' ? 'back' : 'front', variant);
 
     return (
         <div>
-            <Button
-                top='47.2vmin'
-                left='33vmin'
-                size='4vmin'
-                border='0px'
-                onClick={() => { if (isOn && loaded) changeProfile() }}
-            >
-                ▲
-            </Button>
+            <ArrowButton
+                background={colors.blue}
+                border={0}
+                color={colors.sky}
+                content={'◀'}
+                left={30}
+                onClick={changeProfile}
+                top={54}
+            />
 
-            <Button
-                top='54.8vmin'
-                left='33vmin'
-                size='4vmin'
-                border='0px'
-                onClick={() => { if (isOn && loaded) changeProfile() }}
-            >
-                ▼
-            </Button>
+            <ArrowButton
+                background={colors.blue}
+                border={0}
+                content={'▶'}
+                left={35}
+                onClick={changeProfile}
+                top={54}
+            />
         </div>
     )
 };

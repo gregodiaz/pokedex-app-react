@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Toggle from '../../../styled-components/buttons/Toggle';
+import ToggleButton from '../../../presentionals/ToggleButton'
 
-import colors from '../../../../constants/colors';
+import colors from '../../../../constants/colors'
 
 import booleansStore from '../../../../store/booleansStore';
 
@@ -11,19 +11,20 @@ export default function SwitchInfoButton() {
 
     return (
         <div>
-            <Toggle
-                size={'5vmin'}
-                top={'51vmin'}
-                left={'73.4vmin'}
-                border={'.3vmin solid ' + colors.sky}
-                bgColor={colors.blue}
-                color={ colors[isOn && moreInfo ? 'light' : 'dark']}
-                brightness={ isOn && moreInfo? 3 : .5}
+            <ToggleButton
+                size={5}
+                fontSize={2.5}
+                border={'.3vmin solid ' + colors.light}
+                background={colors.lightBlue}
+                color={colors[ moreInfo ? 'light' : 'dark']}
+                brightness={isOn && moreInfo ? 2 : .5}
+                active={moreInfo}
+                content={'i'}
+                top={51}
+                left={73.4}
                 disabled={!isOn}
-                onClick={() => switchMoreInfo()}
-            >
-            !
-            </Toggle>
+                onClick={switchMoreInfo}
+            />
         </div>
     )
 };
