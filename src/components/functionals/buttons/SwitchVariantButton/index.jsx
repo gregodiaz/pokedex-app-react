@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Toggle from '../../../styled-components/buttons/Toggle';
+import ToggleButton from '../../../presentionals/ToggleButton'
 
 import colors from '../../../../constants/colors';
 
@@ -8,30 +8,31 @@ import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
 
 export default function SwitchInfoButton() {
-    const { isOn, shiny, switchShiny } = booleansStore();
-    const { profile, variant, loaded, fetchSprite } = pokemonStore();
+    const { isOn } = booleansStore();
+    const { profile, variant, fetchSprite } = pokemonStore();
+
+    const [shiny, setShiny] = useState(false);
 
     const changeVariant = () => {
-        switchShiny();
+        setShiny(!shiny);
         fetchSprite(profile, variant === 'default' ? 'shiny' : 'default');
     };
 
     return (
         <div>
-            <Toggle
-                size={'3vmin'}
-                fontSize={'1.3vmin'}
-                top={'54vmin'}
-                left={'80.8vmin'}
+            <ToggleButton
+                size={3}
+                top={53.7}
+                left={81.2}
+                fontSize={1.5}
                 border={'.3vmin solid ' + colors.light}
-                bgColor={colors.yellow}
-                color={colors[isOn && shiny ? 'light' : 'dark']}
+                background={colors.yellow}
+                color={colors[shiny ? 'light' : 'dark']}
                 brightness={isOn && shiny ? 2 : .5}
-                disabled={!isOn}
-                onClick={() => changeVariant()}
-            >
-                ★
-            </Toggle>
+                onClick={changeVariant}
+                active={shiny}
+                content={'★'}
+            />
         </div>
     )
 };

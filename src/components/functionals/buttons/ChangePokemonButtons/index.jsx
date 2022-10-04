@@ -1,38 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Button from '../../../styled-components/buttons/Button';
+import ArrowButton from '../../../presentionals/ArrowButton'
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
 
-export default function ChangePokemonButtons() {
-    const { isOn } = booleansStore();
-    const { pokemon, loaded, fetchPokemon } = pokemonStore();
+import colors from '../../../../constants/colors'
 
-    const prev = () => fetchPokemon( pokemon.id > 1 ? pokemon.id - 1 : 905);
-    const next = () => fetchPokemon( pokemon.id < 905 ? pokemon.id + 1 : 1);
+export default function ChangePokemonButtons() {
+    const { pokemon, fetchPokemon } = pokemonStore();
+
+    const prev = () => fetchPokemon(pokemon.id > 1 ? pokemon.id - 1 : 905);
+    const next = () => fetchPokemon(pokemon.id < 905 ? pokemon.id + 1 : 1);
 
     return (
         <div>
-            <Button
-                top='50.7vmin'
-                left='29.1vmin'
-                size='4vmin'
-                border='0px'
-                onClick={() => { if (isOn && loaded) prev() }}
-            >
-                ◀
-            </Button>
+            <ArrowButton
+                top={48.7}
+                left={30}
+                background={colors.blue}
+                color={colors.sky}
+                border={0}
+                onClick={prev}
+                content={'▼'}
+            />
 
-            <Button
-                top='50.8vmin'
-                left='36.6vmin'
-                size='4vmin'
-                border='0px'
-                onClick={() => { if (isOn && loaded) next() }}
-            >
-                ▶
-            </Button>
+            <ArrowButton
+                top={48.7}
+                left={35}
+                background={colors.blue}
+                border={0}
+                onClick={next}
+                content={'▲'}
+            />
         </div>
     )
 };

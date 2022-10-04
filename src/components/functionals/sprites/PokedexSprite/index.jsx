@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Pokedex from '../../../styled-components/sprites/Pokedex';
+import Pokedex from './style';
 
 import booleansStore from '../../../../store/booleansStore';
 

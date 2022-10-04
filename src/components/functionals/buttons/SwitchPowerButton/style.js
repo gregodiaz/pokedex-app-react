@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const Toggle = styled.button`
+import colors from '../../../../constants/colors'
+
+export const Power = styled.button`
     position: absolute;
     cursor: pointer;
-    background: #00000000;
+    background: firebrick;
     height: 5vmin;
     width: 5vmin;
     border-radius: 50%;
@@ -12,7 +14,6 @@ export const Toggle = styled.button`
     border: none;
     padding-top: 0;
 
-    background: ${props => props.bgColor};
     height: ${props => props.size};
     width: ${props => props.size};
 
@@ -29,13 +30,13 @@ export const off = {
     left: 0,
     color: 'black',
     brightness: .5,
-    boxShadow: '-.3vmin .4vmin 0 .1vmin black'
+    boxShadow: '-.3vmin .4vmin 0 .1vmin black',
 };
 
 export const on = {
     top: -.3,
     left: .4,
     color: 'white',
-    brightness: 1.5,
-    boxShadow: '0 0 .7vmin white',
+    brightness: 2,
+    boxShadow: '0 0 .7vmin #ffffff60',
 };
