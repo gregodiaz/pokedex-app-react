@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import AuthTemplate from '../../presentionals/AuthTemplate';
 
+import userStore from '../../../store/userStore';
+
 export default function Login() {
+    const { setUser } = userStore()
     const navigate = useNavigate()
 
     const [body, setBody] = useState({
@@ -28,6 +31,11 @@ export default function Login() {
         });
 
         const data = await res.json()
+
+        const { token, user } = data
+        const { id, name, email } = user[0]
+
+        setUser(id, name, email, token)
 
         !data.error ? navigate('/pokedex-app-react') : alert('Invalid email or password');
     }

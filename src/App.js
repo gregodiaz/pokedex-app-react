@@ -11,9 +11,9 @@ function App() {
         <BackgroundTemplate>
             <BrowserRouter>
                 <Routes>
+                    <Route exact path="/pokedex-app-react" element={<Main />} />
                     <Route exact path="/pokedex-app-react/login" element={<Login />} />
                     <Route exact path="/pokedex-app-react/register" element={<Register />} />
-                    <Route exact path="/pokedex-app-react" element={<Main />} />
                 </Routes>
             </BrowserRouter>
         </BackgroundTemplate>
