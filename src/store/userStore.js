@@ -7,7 +7,8 @@ const userStore = create(set => ({
 
     token: '',
 
-    setUser: (id, name, email, token) => set({ id, name, email, token })
+    setUser: (id, name, email, token) => set({ id, name, email, token }),
+    logout: () => set({ id: 0, name: '', email: '', token: '' })
 }));
 
 export default userStore;

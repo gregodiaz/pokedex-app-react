@@ -1,31 +1,50 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Bar from './style';
 import SignButton from '../buttons/SignButton';
 
 import userStore from '../../../store/userStore';
-import colors from "../../../constants/colors";
 
 export default function NavBar() {
-    const { name, token } = userStore();
+    const { name, token, logout } = userStore();
+    const navigate = useNavigate();
+
+    const route = window.location.pathname.split("/").pop();
+
+    const authRoute = (signType, div) => route === signType ? '' : div
+    const logoutConfirmed = () => { if (window.confirm('Do you want to logout?')) logout() }
 
     return (
-        <Bar >
-            {
-                token ?
-                    <>
-                        <SignButton>
-                            hi {name}!                        </SignButton >
-                    </> :
-                    <>
-                        <SignButton background={'darkred'} color={'firebrick'} route={'/pokedex-app-react/register'}>
-                            Sing Up!
-                        </SignButton >
-                        <SignButton route={'/pokedex-app-react/login'}>
-                            Sing In!
-                        </SignButton >
-                    </>
-            }
+        <Bar>
+            <SignButton onClick={navigate} route={'/pokedex-app-react'} theme='invert'>
+                Pokedex!
+            </SignButton >
+            <div>
+                {
+                    token ?
+                        <>
+                            <SignButton theme='invert'>
+                                hi {name}!
+                            </SignButton >
+                            <SignButton onClick={logoutConfirmed}>
+                                Logout
+                            </SignButton >
+                        </> :
+                        <>
+                            {authRoute('login',
+                                <SignButton onClick={navigate} route={'/pokedex-app-react/login'}>
+                                    Sign In!
+                                </SignButton >
+                            )}
+                            {authRoute('register',
+                                <SignButton onClick={navigate} route={'/pokedex-app-react/register'} theme='invert'>
+                                    Sign Up!
+                                </SignButton >
+                            )}
+                        </>
+                }
+            </div>
         </Bar >
     )
 };

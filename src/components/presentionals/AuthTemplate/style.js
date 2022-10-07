@@ -13,10 +13,12 @@ export const Background = styled.div`
 
 export const Div = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 2vmin;
     border-radius: .5vmin;
-    background: dimgray;
+    background: ${colors.pokedex};
 
     form > * {
         display: flex;
@@ -28,13 +30,14 @@ export const Div = styled.div`
         border: 0vmin;
         margin: .7vmin;
         width: 34vmin;
+        background: ${colors.sky};
         
         &: focus {
-            outline: .06vmin solid ${colors.lightBlue};
+            outline: .06vmin solid ${colors.blue};
         }
 
         &: hover {
-            background: lightgray;
+            background: ${colors.lightBlue};
             font-weight: bold;
         }
     }
@@ -48,11 +51,12 @@ export const Div = styled.div`
         margin-top: 2vmin;
         width: 34vmin;
         font-weight: bold;
-        background: ${colors.blue};
-        color: ${colors.light};
+        background: ${colors.pokedex};
+        color: ${colors.darkPokedex};
 
         &: hover {
-            background: ${colors.sky};
+            background: ${colors.darkPokedex};
+            color: ${colors.yellow};
         }
     }
 
@@ -66,5 +70,17 @@ export const Div = styled.div`
 
     a {
         color: ${colors.lightBlue};
+    }
+
+    div > * { 
+        border-radius: .3vmin;
+        text-align: center;
+        padding: .3vmin;
+        border: 0vmin;
+        margin: .5vmin;
+        width: 34vmin;
+        font-weight: bold;
+        background: ${colors.darkPokedex};
+        color: ${colors.yellow};
     }
 `;

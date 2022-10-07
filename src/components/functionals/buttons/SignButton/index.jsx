@@ -1,18 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import Button from './style';
 
-export default function Sign({ children, route, background, color }) {
-    const navigate = useNavigate();
-
-    const navigateTo = () => navigate(route);
+export default function SignButton({ children, route, theme, onClick }) {
 
     return (
         <Button
-            background={background}
-            color={color}
-            onClick={() => navigateTo()}
+            theme={theme}
+            onClick={() => onClick(route ? route : '')}
         >
             {children}
         </Button>
