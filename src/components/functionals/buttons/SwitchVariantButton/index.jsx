@@ -11,11 +11,11 @@ export default function SwitchInfoButton() {
     const { isOn } = booleansStore();
     const { profile, variant, fetchSprite } = pokemonStore();
 
-    const [shiny, setShiny] = useState(false);
+    const [shiny, setShiny] = useState(variant === 'shiny');
 
     const changeVariant = () => {
+        fetchSprite(profile, shiny ? 'default' : 'shiny');
         setShiny(!shiny);
-        fetchSprite(profile, variant === 'default' ? 'shiny' : 'default');
     };
 
     return (

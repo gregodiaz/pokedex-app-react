@@ -1,13 +1,14 @@
 import React from "react";
 
 import ApiData from "../../functionals/ApiData";
-import Background from './style'
+import NavBar from '../../functionals/NavBar';
 
 export default function Main() {
 
     return (
-        <Background>
+        <>
+            <NavBar />
             <ApiData />
-        </Background>
+        </>
     )
 };
