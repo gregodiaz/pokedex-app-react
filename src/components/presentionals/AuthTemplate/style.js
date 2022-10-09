@@ -60,24 +60,26 @@ export const Div = styled.div`
         }
     }
 
-    p, a {
+    p {
         font-size: 2vmin;
         display: inline-block;
         text-align: right;
         margin-top: 1vmin;
         margin-bottom: 0vmin;
+        color: ${colors.dark};
     }
 
-    a {
+    span {
+        cursor: pointer;
         color: ${colors.lightBlue};
     }
 
-    div > * { 
+    div { 
         border-radius: .3vmin;
         text-align: center;
-        padding: .3vmin;
+        margin: .3vmin 0vmin;
+        padding: .3vmin 0vmin;
         border: 0vmin;
-        margin: .5vmin;
         width: 34vmin;
         font-weight: bold;
         background: ${colors.darkPokedex};

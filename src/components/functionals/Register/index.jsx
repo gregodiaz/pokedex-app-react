@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import AuthTemplate from '../../presentionals/AuthTemplate';
 import NavBar from '../../functionals/NavBar';
 
+import userStore from '../../../store/userStore';
+
 export default function Login() {
+    const { register } = userStore()
     const navigate = useNavigate()
 
     const [errors, setErrors] = useState('')
@@ -20,24 +23,21 @@ export default function Login() {
 
     const handleChange = event => setBody({ ...body, [event.target.name]: event.target.value })
 
-    const handleClick = async () => {
+    const handleSubmit = event => {
+        event.preventDefault()
         if (!body.name || !body.password || !body.password_confirmation || !body.email) return;
+        handleRegister(body)
+    }
 
-        const res = await fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify(body)
-        });
-
-        const data = await res.json()
-
-        console.log(data)
-        if (!data.user) return setErrors(JSON.parse(data));
-
-        navigate('/pokedex-app-react/login')
+    const handleRegister = async credentials => {
+        try {
+            const data = await register(credentials)
+            if (data) return setErrors(JSON.parse(data));
+            navigate('/pokedex-app-react')
+        } catch (error) {
+            console.log(error)
+            setErrors({ email: ['The server is not running'] })
+        }
     }
 
     return (
@@ -56,29 +56,32 @@ export default function Login() {
                                     ))
                                     : ''}
                             </div>
-                            <div>
-                                {errors.password ? 
-                                    errors.password.map(error => (
+                            {errors.password ?
+                                <div>
+                                    {errors.password.map(error => (
                                         <div>
                                             {error}
                                         </div>
-                                    ))
+                                    ))}
 
+                                </div>
                                 : ''}
-                            </div>
                         </>
                         : ''
                 }
-                <form onSubmit={e => e.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                     <input type="text" name="name" placeholder="name" onChange={handleChange} required />
                     <input type="password" name="password" placeholder="password" onChange={handleChange} required />
                     <input type="password" name="password_confirmation" placeholder="confirm password" onChange={handleChange} required />
                     <input type="email" name="email" placeholder="email" onChange={handleChange} required />
-                    <button onClick={() => handleClick()}>Register</button>
+                    <button>Register</button>
                 </form>
 
                 <p>
-                    Have an account? <a href="/pokedex-app-react/login">Login!</a>
+                    {'Have an account? '}
+                    <span onClick={() => navigate('/pokedex-app-react/login')}>
+                        Login!
+                    </span>
                 </p>
             </AuthTemplate>
         </>

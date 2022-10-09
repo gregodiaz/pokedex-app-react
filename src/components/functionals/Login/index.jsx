@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuthTemplate from '../../presentionals/AuthTemplate';
@@ -7,7 +7,7 @@ import NavBar from '../../functionals/NavBar';
 import userStore from '../../../store/userStore';
 
 export default function Login() {
-    const { setUser } = userStore()
+    const { login } = userStore()
     const navigate = useNavigate()
 
     const [error, setError] = useState('')
@@ -17,36 +17,29 @@ export default function Login() {
         password: '',
     })
 
-    const baseUrl = 'http://localhost:8000/api/login';
+    const handleChange = ({ target }) => setBody({ ...body, [target.name]: target.value })
 
-    const handleChange = event => setBody({ ...body, [event.target.name]: event.target.value })
-
-    const handleClick = async () => {
+    const handleSubmit = event => {
+        event.preventDefault()
         if (!body.email || !body.password) return;
+        handleLogin(body)
+    }
 
-        const res = await fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify(body)
-        });
+    const handleLogin = async credentials => {
+        try {
+            const data = await login(credentials)
+            if (data) return setError(data.error);
+            navigate('/pokedex-app-react')
 
-        const data = await res.json()
-
-        if (data.error) return setError(data.error);
-
-        const { token, user } = data
-        const { id, name, email } = user[0]
-
-        setUser(id, name, email, token)
-        navigate('/pokedex-app-react')
+        } catch (error) {
+            console.log(error)
+            setError('The server is not running')
+        }
     }
 
     return (
         <>
-            <NavBar />
+            <NavBar handleLogin={handleLogin} />
             <AuthTemplate>
                 {
                     error ?
@@ -55,14 +48,17 @@ export default function Login() {
                         </div> :
                         ''
                 }
-                <form onSubmit={e => e.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                     <input type="text" name="email" placeholder="email" onChange={handleChange} required />
                     <input type="password" name="password" placeholder="password" onChange={handleChange} required />
-                    <button onClick={() => handleClick()}>Send</button>
+                    <button>Send</button>
                 </form>
 
                 <p>
-                    Dont have an account? <a href="/pokedex-app-react/register">Register!</a>
+                    {'Dont have an account? '}
+                    <span onClick={() => navigate('/pokedex-app-react/register')}>
+                        Register!
+                    </span>
                 </p>
             </AuthTemplate>
         </>
