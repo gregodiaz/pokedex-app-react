@@ -19,8 +19,6 @@ export default function Login() {
         email: '',
     })
 
-    const baseUrl = 'http://localhost:8000/api/register';
-
     const handleChange = event => setBody({ ...body, [event.target.name]: event.target.value })
 
     const handleSubmit = event => {

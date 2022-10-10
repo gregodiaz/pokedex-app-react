@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Bar from './style';
-import SignButton from '../buttons/SignButton';
 
+import AddFavorite from '../buttons/AddFavorite';
+import Sign from '../buttons/Sign';
+
+import powerStore from '../../../store/powerStore';
 import userStore from '../../../store/userStore';
-import pokemonStore from '../../../store/pokemonStore';
-
-const baseUrl = 'http://localhost:8000/api/';
 
 export default function NavBar() {
-    const { id, name, token, logout, login } = userStore();
-    const { pokemon } = pokemonStore();
+    const { isOn } = powerStore();
+    const { name, token, login } = userStore();
+
     const navigate = useNavigate();
 
-    const route = window.location.pathname.split("/").pop();
-    const [isFav, setIsFav] = useState(false)
+    const route = window.location.pathname.split('/').pop();
 
     const authRoute = (signType, div) => route === signType ? '' : div
 
@@ -27,65 +27,43 @@ export default function NavBar() {
         }
     };
 
-    const favPokemon = async () => {
-        const body = {
-            'name': pokemon.name,
-            'user_id': id,
-            'pokemon_id': pokemon.id,
-        }
-
-        await fetch(baseUrl + 'v1/favourites', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(body)
-        });
-
-        setIsFav(!isFav)
-    }
-
     useEffect(() => {
         userSession()
     }, [])
 
-    useEffect(() => {
-        setIsFav(false)
-    }, [pokemon.id])
-
     return (
         <Bar>
-            <SignButton onClick={navigate} route={'/pokedex-app-react'} theme='invert'>
+            <Sign onClick={navigate} route={'/pokedex-app-react'} theme={true}>
                 Pokedex!
-            </SignButton >
+            </Sign >
             <div>
                 {
                     token ?
                         <>
                             {authRoute('profile',
                                 <>
-                                    <SignButton theme={!isFav} onClick={favPokemon} >
-                                        ★
-                                    </SignButton >
-                                    <SignButton onClick={navigate} route={'/pokedex-app-react/profile'}>
+                                    {
+                                        isOn ?
+                                            <AddFavorite />
+                                            : ''
+                                    }
+                                    <Sign onClick={navigate} route={'/pokedex-app-react/profile'}>
                                         Profile
-                                    </SignButton >
+                                    </Sign >
                                 </>
                             )}
                             <span> hi {name}!</span>
                         </> :
                         <>
                             {authRoute('login',
-                                <SignButton onClick={navigate} route={'/pokedex-app-react/login'}>
+                                <Sign onClick={navigate} route={'/pokedex-app-react/login'}>
                                     Sign In!
-                                </SignButton >
+                                </Sign >
                             )}
                             {authRoute('register',
-                                <SignButton onClick={navigate} route={'/pokedex-app-react/register'} theme='invert'>
+                                <Sign onClick={navigate} route={'/pokedex-app-react/register'} theme={true}>
                                     Sign Up!
-                                </SignButton >
+                                </Sign >
                             )}
                         </>
                 }

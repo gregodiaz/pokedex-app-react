@@ -4,11 +4,11 @@ import ToggleButton from '../../../presentionals/ToggleButton'
 
 import colors from '../../../../constants/colors';
 
-import booleansStore from '../../../../store/booleansStore';
+import powerStore from '../../../../store/powerStore';
 import pokemonStore from '../../../../store/pokemonStore';
 
 export default function SwitchInfoButton() {
-    const { isOn } = booleansStore();
+    const { isOn } = powerStore();
     const { profile, variant, fetchSprite } = pokemonStore();
 
     const [shiny, setShiny] = useState(variant === 'shiny');

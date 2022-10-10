@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 
 import Info from './style';
 
-import booleansStore from '../../../../store/booleansStore';
+import infoStore from '../../../../store/infoStore';
 import pokemonStore from '../../../../store/pokemonStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function InfoPanel() {
-    const { isOn, moreInfo } = booleansStore();
+    const { moreInfo } = infoStore();
     const { pokemon, loaded } = pokemonStore();
+    const { isOn } = powerStore();
 
     const mapper = (arr, prop, propn = 'name') =>
         arr.map((elem, index) => <div key={index}>{index + 1 + ' . ' + elem[prop][propn]}</div>)

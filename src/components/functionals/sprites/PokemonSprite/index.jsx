@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 import Pokemon from './style';
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function PokemonSprite() {
-    const { isOn } = booleansStore();
     const { pokemon, loaded } = pokemonStore();
+    const { isOn } = powerStore();
 
     const sprite =
         loaded && !pokemon.sprite.includes('null') ?
@@ -16,9 +16,11 @@ export default function PokemonSprite() {
 
     return (
         <div>
-            {isOn && loaded ?
-                <Pokemon src={sprite} />
-                : ''}
+            {
+                isOn && loaded ?
+                    <Pokemon src={sprite} />
+                    : ''
+            }
         </div>
     )
 };

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 import Pokedex from './style';
 
-import booleansStore from '../../../../store/booleansStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function PokedexSprite() {
-    const { isOn } = booleansStore();
+    const { isOn } = powerStore();
 
     return (
         <Pokedex

@@ -1,18 +1,17 @@
-import create from "zustand";
+import create from 'zustand';
 
-const baseUrl = 'http://localhost:8000/api/';
+import { backApiUrl } from '../constants/urls';
 
 const userStore = create(set => ({
     id: 0,
     name: '',
     email: '',
-
     token: '',
 
     setUser: (id, name, email, token) => set({ id, name, email, token }),
 
     login: async credentials => {
-        const res = await fetch(baseUrl + 'login', {
+        const res = await fetch(`${backApiUrl}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +33,7 @@ const userStore = create(set => ({
     },
 
     register: async credentials => {
-        const res = await fetch(baseUrl + 'register', {
+        const res = await fetch(`${backApiUrl}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

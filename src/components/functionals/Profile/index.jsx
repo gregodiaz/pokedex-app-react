@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Div, DivInt, Title } from './style';
-import SignButton from '../buttons/SignButton';
+import Sign from '../buttons/Sign';
 
 import DefaultTemplate from '../../presentionals/DefaultTemplate';
 
@@ -30,9 +30,9 @@ export default function Profile() {
             <Div>
                 <DivInt width='30%'>
                     <Title>{name}</Title>
-                    <SignButton onClick={logoutConfirmed}>
-                        Logout
-                    </SignButton >
+                    <Sign onClick={logoutConfirmed}>
+                        Sign Out
+                    </Sign >
                 </DivInt>
                 <DivInt width='70%'>
                     <Title>Favourites</Title>

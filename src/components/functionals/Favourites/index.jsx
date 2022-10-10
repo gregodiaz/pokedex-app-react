@@ -3,52 +3,28 @@ import { useNavigate } from 'react-router-dom';
 
 import { Table } from './style';
 
-import userStore from '../../../store/userStore';
+import favouritesStore from '../../../store/favouritesStore';
 import pokemonStore from '../../../store/pokemonStore';
-
-const baseUrl = 'http://localhost:8000/api/';
+import userStore from '../../../store/userStore';
 
 export default function Favourites() {
-    const { id: user_id, token } = userStore()
+    const { favourites, loaded, fetchFavourites, deleteFavourite } = favouritesStore()
     const { fetchPokemon } = pokemonStore()
+    const { id: user_id, token } = userStore()
 
     const navigate = useNavigate();
 
-    const [favourites, setFavourites] = useState([])
-    const [loaded, setLoaded] = useState(false)
-
     const fetchFavouritesList = async () => {
-        const res = await fetch(baseUrl + 'v1/favourites', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-        });
-
-        const { data } = await res.json()
-        const favouriteList = data.filter(favourite => favourite.user_id === user_id)
-
-        setFavourites(favouriteList)
-        setLoaded(true)
+        await fetchFavourites(user_id, token)
     }
 
-    const deleteFav = async id => {
-        await fetch(baseUrl + `v1/favourites/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-        });
-
-        await fetchFavouritesList()
+    const deleteFav = async (id) => {
+        await deleteFavourite(id, token)
+        await fetchFavourites(user_id, token)
     }
 
     const handleDelete = async id => {
-        if (window.confirm('Do you want to delete the pokemon from your favourites list?'))
-            deleteFav(id);
+        if (window.confirm('Do you want to delete the pokemon from your favourites list?')) deleteFav(id);
     }
 
     const handleClick = async id => {
@@ -67,19 +43,26 @@ export default function Favourites() {
                 <tr>
                     <td>id</td>
                     <td>name</td>
-                    <td>name</td>
+                    <td>delete</td>
                 </tr>
             </thead>
             <tbody>
                 {
                     loaded ?
                         favourites.map(favourite => (
-                            <tr>
+                            <tr key={favourite.id}>
                                 <td id={favourite.pokemon_id} onClick={({ target }) => handleClick(target.id)}>{favourite.pokemon_id}</td>
                                 <td id={favourite.pokemon_id} onClick={({ target }) => handleClick(target.id)}>{favourite.name}</td>
                                 <td><button id={favourite.id} onClick={({ target }) => handleDelete(target.id)}>Delete</button></td>
                             </tr>
-                        )) : ''
+                        ))
+                        :
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                 }
             </tbody>
         </Table>
