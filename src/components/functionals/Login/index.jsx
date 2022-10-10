@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import AuthTemplate from '../../presentionals/AuthTemplate';
-import NavBar from '../../functionals/NavBar';
+import DefaultTemplate from '../../presentionals/DefaultTemplate';
 
 import userStore from '../../../store/userStore';
 
@@ -38,8 +38,7 @@ export default function Login() {
     }
 
     return (
-        <>
-            <NavBar handleLogin={handleLogin} />
+        <DefaultTemplate>
             <AuthTemplate>
                 {
                     error ?
@@ -49,8 +48,8 @@ export default function Login() {
                         ''
                 }
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="email" placeholder="email" onChange={handleChange} required />
-                    <input type="password" name="password" placeholder="password" onChange={handleChange} required />
+                    <input type='text' name='email' placeholder='email' onChange={handleChange} required />
+                    <input type='password' name='password' placeholder='password' onChange={handleChange} required />
                     <button>Send</button>
                 </form>
 
@@ -61,6 +60,6 @@ export default function Login() {
                     </span>
                 </p>
             </AuthTemplate>
-        </>
+        </DefaultTemplate >
     )
 };

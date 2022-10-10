@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Background, Div, DivInt, Title } from './style';
+import { Div, DivInt, Title } from './style';
 import SignButton from '../buttons/SignButton';
-import NavBar from '../../functionals/NavBar';
+
+import DefaultTemplate from '../../presentionals/DefaultTemplate';
+
 import Favorites from '../../functionals/Favourites';
 
 import userStore from '../../../store/userStore';
@@ -24,22 +26,19 @@ export default function Profile() {
     }, [])
 
     return (
-        <>
-            <NavBar />
-            <Background>
-                <Div>
-                    <DivInt width='30%'>
-                        <Title>{name}</Title>
-                        <SignButton onClick={logoutConfirmed}>
-                            Logout
-                        </SignButton >
-                    </DivInt>
-                    <DivInt width='70%'>
-                        <Title>Favourites</Title>
-                        <Favorites />
-                    </DivInt>
-                </Div>
-            </Background>
-        </>
+        <DefaultTemplate >
+            <Div>
+                <DivInt width='30%'>
+                    <Title>{name}</Title>
+                    <SignButton onClick={logoutConfirmed}>
+                        Logout
+                    </SignButton >
+                </DivInt>
+                <DivInt width='70%'>
+                    <Title>Favourites</Title>
+                    <Favorites />
+                </DivInt>
+            </Div>
+        </DefaultTemplate >
     )
 };

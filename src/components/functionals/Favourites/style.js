@@ -11,16 +11,17 @@ export const Table = styled.table`
     background: ${colors.sky};
 
     tr {
-        display: flex;
-        justify-content: space-between;
         align-items: center;
+        background: ${colors.lightBlue};
+        display: flex;
         height: 5vmin;
+        justify-content: space-between;
         margin: .5vmin;
         padding: 3vmin;
-        background: ${colors.lightBlue};
     }
     
     td {
+        cursor: pointer
         padding: 0vmin 3vmin;
     }
 `;

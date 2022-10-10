@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import IdSearch from '../../functionals/searches/IdSearch';
 import NameSearch from '../../functionals/searches/NameSearch';

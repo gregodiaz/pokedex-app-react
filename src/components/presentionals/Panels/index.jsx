@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import TypesPanel from '../../functionals/panels/TypesPanel';
+import InfoPanel from '../../functionals/panels/InfoPanel';
 import PhysicalPanel from '../../functionals/panels/PhysicalPanel';
 import StatsPanel from '../../functionals/panels/StatsPanel';
-import InfoPanel from '../../functionals/panels/InfoPanel';
+import TypesPanel from '../../functionals/panels/TypesPanel';
 
 export default function Panels() {
     return (

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Table } from './style';
 
@@ -52,7 +52,6 @@ export default function Favourites() {
     }
 
     const handleClick = async id => {
-        console.log(id)
         await fetchPokemon(id)
         navigate('/pokedex-app-react')
     }
@@ -75,9 +74,9 @@ export default function Favourites() {
                 {
                     loaded ?
                         favourites.map(favourite => (
-                            <tr id={favourite.pokemon_id} onClick={({ target }) => handleClick(target.id)}>
-                                <td>{favourite.pokemon_id}</td>
-                                <td>{favourite.name}</td>
+                            <tr>
+                                <td id={favourite.pokemon_id} onClick={({ target }) => handleClick(target.id)}>{favourite.pokemon_id}</td>
+                                <td id={favourite.pokemon_id} onClick={({ target }) => handleClick(target.id)}>{favourite.name}</td>
                                 <td><button id={favourite.id} onClick={({ target }) => handleDelete(target.id)}>Delete</button></td>
                             </tr>
                         )) : ''

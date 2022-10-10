@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import AuthTemplate from '../../presentionals/AuthTemplate';
-import NavBar from '../../functionals/NavBar';
+import DefaultTemplate from '../../presentionals/DefaultTemplate';
 
 import userStore from '../../../store/userStore';
 
@@ -41,8 +41,7 @@ export default function Login() {
     }
 
     return (
-        <>
-            <NavBar />
+        <DefaultTemplate >
             <AuthTemplate>
                 {
                     errors ?
@@ -70,10 +69,10 @@ export default function Login() {
                         : ''
                 }
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="name" placeholder="name" onChange={handleChange} required />
-                    <input type="password" name="password" placeholder="password" onChange={handleChange} required />
-                    <input type="password" name="password_confirmation" placeholder="confirm password" onChange={handleChange} required />
-                    <input type="email" name="email" placeholder="email" onChange={handleChange} required />
+                    <input type='text' name='name' placeholder='name' onChange={handleChange} required />
+                    <input type='password' name='password' placeholder='password' onChange={handleChange} required />
+                    <input type='password' name='password_confirmation' placeholder='confirm password' onChange={handleChange} required />
+                    <input type='email' name='email' placeholder='email' onChange={handleChange} required />
                     <button>Register</button>
                 </form>
 
@@ -84,6 +83,6 @@ export default function Login() {
                     </span>
                 </p>
             </AuthTemplate>
-        </>
+        </DefaultTemplate >
     )
 };
