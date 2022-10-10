@@ -1,5 +1,5 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import { Toggle, off, on } from './style'
 

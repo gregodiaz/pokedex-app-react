@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import ApiData from "../../functionals/ApiData";
-import NavBar from '../../functionals/NavBar';
+import DefaultTemplate from '../../presentionals/DefaultTemplate';
+
+import Pokedex from '../../functionals/Pokedex';
 
 export default function Main() {
 
     return (
-        <>
-            <NavBar />
-            <ApiData />
-        </>
+        <DefaultTemplate >
+            <Pokedex />
+        </DefaultTemplate >
     )
 };

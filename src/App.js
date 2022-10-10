@@ -1,23 +1,20 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import BackgroundTemplate from './components/presentionals/BackgroundTemplate';
-import Main from './components/presentionals/Main';
 import Login from './components/functionals/Login';
+import Main from './components/presentionals/Main';
+import Profile from './components/functionals/Profile';
 import Register from './components/functionals/Register';
 
-function App() {
+export default function App() {
     return (
-        <BackgroundTemplate>
-            <BrowserRouter>
-                <Routes>
-                    <Route exact path="/pokedex-app-react" element={<Main />} />
-                    <Route exact path="/pokedex-app-react/login" element={<Login />} />
-                    <Route exact path="/pokedex-app-react/register" element={<Register />} />
-                </Routes>
-            </BrowserRouter>
-        </BackgroundTemplate>
+        <Router>
+            <Routes>
+                <Route exact path='/pokedex-app-react' element={<Main />} />
+                <Route exact path='/pokedex-app-react/login' element={<Login />} />
+                <Route exact path='/pokedex-app-react/register' element={<Register />} />
+                <Route exact path='/pokedex-app-react/profile' element={<Profile />} />
+            </Routes>
+        </Router>
     );
-}
-
-export default App;
+};

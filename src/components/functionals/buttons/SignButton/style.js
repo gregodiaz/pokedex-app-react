@@ -6,7 +6,6 @@ import colors from '../../../../constants/colors';
 const Button = styled.button`
     cursor: pointer;
     margin: 1vmin;
-    min-width: 15vmin;
     border-radius: .3vmin;
     font-size: 3vmin;
     font-weight: bold;
