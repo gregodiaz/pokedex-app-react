@@ -14,9 +14,12 @@ const Bar = styled.div`
     width: 100vw;
 
     box-shadow: 0 .05vmin 2vmin 0vmin ${colors.sky};
-    // background: ${colors.firebrick};
-    // color: ${colors.dark};
+    color: ${colors.firebrick};
     background: ${colors.darkPokedex};
+
+    span {
+        margin: 1vmin;
+    }
 `;
 
 export default Bar;
