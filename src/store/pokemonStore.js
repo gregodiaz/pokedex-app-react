@@ -1,6 +1,6 @@
-import create from "zustand";
+import create from 'zustand';
 
-const url = 'https://pokeapi.co/api/v2/pokemon/';
+import { pokeApiUrl } from '../constants/urls';
 
 const pokemonStore = create((set, get) => ({
     pokemon: {},
@@ -9,10 +9,10 @@ const pokemonStore = create((set, get) => ({
     variant: 'default',
 
     fetchPokemon: async id => {
-        const response = await fetch(url + id);
+        const response = await fetch(`${pokeApiUrl}/pokemon/${id}`);
         const data = await response.json();
 
-        const spriteResponse = await fetch(data.sprites[get().profile + '_' + get().variant])
+        const spriteResponse = await fetch(data.sprites[`${get().profile}_${get().variant}`])
         const sprite = spriteResponse.url
 
         set({ pokemon: { ...data, sprite } })
@@ -22,7 +22,7 @@ const pokemonStore = create((set, get) => ({
     fetchSprite: async (profile, variant) => {
         set({ profile, variant })
 
-        const spriteResponse = await fetch(get().pokemon.sprites[profile + '_' + variant])
+        const spriteResponse = await fetch(get().pokemon.sprites[`${get().profile}_${get().variant}`])
         const sprite = spriteResponse.url
 
         set(state => ({ pokemon: { ...state.pokemon, sprite } }))

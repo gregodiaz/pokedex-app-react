@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { Toggle, off, on } from './style'
+import { Toggle, off, on } from './style';
 
-import booleansStore from '../../../store/booleansStore';
+import powerStore from '../../../store/powerStore';
 
 export default function ToggleInfo(props) {
-    const { isOn } = booleansStore();
+    const { isOn } = powerStore();
 
     return (
         <ThemeProvider theme={ isOn && props.active ? on : off}>

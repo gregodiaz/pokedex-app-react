@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import ToggleButton from '../../../presentionals/ToggleButton'
+import ToggleButton from '../../../presentionals/ToggleButton';
 
-import colors from '../../../../constants/colors'
+import infoStore from '../../../../store/infoStore';
+import powerStore from '../../../../store/powerStore';
 
-import booleansStore from '../../../../store/booleansStore';
+import colors from '../../../../constants/colors';
 
 export default function SwitchInfoButton() {
-    const { isOn, moreInfo, switchMoreInfo } = booleansStore();
+    const { moreInfo, switchMoreInfo } = infoStore();
+    const { isOn } = powerStore();
 
     return (
         <div>
@@ -16,7 +18,7 @@ export default function SwitchInfoButton() {
                 fontSize={2.5}
                 border={'.3vmin solid ' + colors.light}
                 background={colors.lightBlue}
-                color={colors[ moreInfo ? 'light' : 'dark']}
+                color={colors[moreInfo ? 'light' : 'dark']}
                 brightness={isOn && moreInfo ? 2 : .5}
                 active={moreInfo}
                 content={'i'}

@@ -1,12 +1,12 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import { Power, off, on } from './style';
 
-import booleansStore from '../../../../store/booleansStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function SwitchPowerButton() {
-    const { isOn, switchPower } = booleansStore();
+    const { isOn, switchPower } = powerStore();
 
     return (
         <ThemeProvider theme={isOn ? on : off}>

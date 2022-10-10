@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useState } from 'react';
 
-import Search from './style'
+import Search from './style';
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function IdSearch() {
-    const { isOn } = booleansStore();
-    const { pokemon } = pokemonStore();
+    const { pokemon, fetchPokemon } = pokemonStore();
+    const { isOn } = powerStore();
+
+    const [id, setId] = useState(null)
 
     const idFormated = `#${(pokemon.id < 10 ? '00' : (pokemon.id < 100 ? '0' : '')) + pokemon.id}`
 
+    const handleChange = ({ target }) => {
+        const newId = target.value
+
+        if (!isNaN(newId) && newId >= 1 && newId <= 905) return setId(newId);
+    }
+
+    const handleSubmit = async event => {
+        event.preventDefault()
+        const idClean = event.target.firstChild.value
+        event.target.firstChild.value = ''
+
+        if (!isNaN(idClean) && idClean >= 1 && idClean <= 905) await fetchPokemon(id);
+        else window.alert('Only numbers between 1 and 905');
+    }
+
     return (
-        <form >
+        <form onSubmit={handleSubmit}>
             <Search
                 disabled={!isOn}
                 placeholder={isOn ? idFormated : ''}
+                onChange={handleChange}
             />
         </form>
     )

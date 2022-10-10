@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from 'react';
 
-import { Arrow } from './style'
+import { Arrow } from './style';
 
-import booleansStore from '../../../store/booleansStore';
+import powerStore from '../../../store/powerStore';
 
 export default function ArrowButton(props) {
-    const { isOn } = booleansStore();
+    const { isOn } = powerStore();
 
     return (
         <Arrow

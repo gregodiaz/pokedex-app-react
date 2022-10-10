@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 import Stats from './style';
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function StatsPanel() {
-    const { isOn } = booleansStore();
     const { pokemon, loaded } = pokemonStore();
+    const { isOn } = powerStore();
 
 
     const h = 4.3;

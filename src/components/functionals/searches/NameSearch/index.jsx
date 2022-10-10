@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import Search from './style'
+import Search from './style';
 
-import booleansStore from '../../../../store/booleansStore';
 import pokemonStore from '../../../../store/pokemonStore';
+import powerStore from '../../../../store/powerStore';
 
 export default function NameSearch() {
-    const { isOn } = booleansStore();
     const { pokemon } = pokemonStore();
+    const { isOn } = powerStore();
 
     return (
         <form >
