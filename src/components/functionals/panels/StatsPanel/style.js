@@ -3,21 +3,22 @@ import styled from 'styled-components';
 import colors from '../../../../constants/colors'
 
 const Stats= styled.div`
-    position: absolute;
-    height: 4.5vmin;
-    width: 11vmin;
-    border-radius: 5px;
-    font-size: 3vmin ;
-    font-weight: bold ;
-    text-align: center ;
+    border-radius: .2vmin;
     font-family:'Titillium Web';
+    font-size: 2vmin ;
+    font-weight: bold ;
+    height: 6.5vmin;
+    text-align: center ;
+    width: 5.5vmin;
 
     background: ${colors.lightBlue};
     border: .3vmin solid ${colors.blue};
     color: ${colors.dark};
+    filter: brightness(${props => props.brightness}); 
 
-    top: ${props => props.top};
-    left: ${props => props.left};
+    p { 
+        margin: 0;
+    }
 `;
 
 export default Stats;

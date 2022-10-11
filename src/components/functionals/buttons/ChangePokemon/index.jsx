@@ -1,10 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import ArrowButton from '../../../presentionals/ArrowButton'
+import ArrowButton from '../../../presentionals/ArrowButton';
 
 import pokemonStore from '../../../../store/pokemonStore';
-
-import colors from '../../../../constants/colors'
 
 export default function ChangePokemonButtons() {
     const { pokemon, fetchPokemon } = pokemonStore();
@@ -13,26 +11,16 @@ export default function ChangePokemonButtons() {
     const next = () => fetchPokemon(pokemon.id < 905 ? pokemon.id + 1 : 1);
 
     return (
-        <div>
+        <>
             <ArrowButton
-                top={48.7}
-                left={30}
-                background={colors.blue}
-                color={colors.sky}
-                border={0}
                 onClick={prev}
-                content={'▼'}
+                content={'◂'}
             />
 
             <ArrowButton
-                top={48.7}
-                left={35}
-                background={colors.blue}
-                border={0}
                 onClick={next}
-                content={'▲'}
+                content={'▸'}
             />
-        </div>
+        </>
     )
 };
-

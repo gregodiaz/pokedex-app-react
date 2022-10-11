@@ -11,8 +11,8 @@ export default function SwitchPowerButton() {
     return (
         <ThemeProvider theme={isOn ? on : off}>
             <Power
-                top={47.45}
-                left={7.44}
+                top={48}
+                left={8}
                 onClick={() => switchPower()}
             >O
             </Power>

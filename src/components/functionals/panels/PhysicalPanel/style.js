@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
-import colors from '../../../../constants/colors'
+import colors from '../../../../constants/colors';
 
 const Physical = styled.div`
-    position: absolute;
-    height: 3.5vmin;
-    width: 16vmin;
+    align-items: center ;
     border-radius: .7vmin;
-    font-size: 2vmin;
-    font-weight: bold ;
-    text-align: center ;
+    display: flex;
     font-family:'Titillium Web';
+    font-size: 2.5vmin;
+    font-weight: bold ;
+    height: 5vmin;
+    justify-content: center;
+    overflow: hidden;
+    width: 16vmin;
 
     background: ${colors.darkGreen};
     border: .3vmin solid ${colors.yellow};
     color: ${colors.yellow};
-
-    top: ${props => props.top};
-    left: ${props => props.left};
+    filter: brightness(${props => props.brightness}); 
 `;
 
 export default Physical;

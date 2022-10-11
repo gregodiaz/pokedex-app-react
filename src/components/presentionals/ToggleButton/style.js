@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import colors from '../../../constants/colors';
+
 export const Toggle = styled.button`
     position: absolute;
     cursor: pointer;
@@ -28,15 +30,15 @@ export const Toggle = styled.button`
 export const off = {
     top: 0,
     left: 0,
-    color: 'black',
+    color: colors.darkBlue,
     brightness: .5,
-    boxShadow: '-.3vmin .4vmin 0 .1vmin black'
+    boxShadow: `-.3vmin .4vmin 0 .1vmin ${colors.darkBlue}`
 };
 
 export const on = {
     top: -.3,
     left: .4,
-    color: 'white',
+    color: colors.white,
     brightness: 1.5,
-    boxShadow: '0 0 .7vmin white',
+    boxShadow: `0 0 .7vmin ${colors.white}`,
 };
