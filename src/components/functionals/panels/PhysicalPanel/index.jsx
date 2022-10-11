@@ -2,6 +2,9 @@ import React from 'react';
 
 import Physical from './style';
 
+import Template from '../../../presentionals/HigherTemplate';
+// import Template from '../../../presentionals/FlushTemplate';
+
 import pokemonStore from '../../../../store/pokemonStore';
 import powerStore from '../../../../store/powerStore';
 
@@ -10,15 +13,15 @@ export default function PhysicalPanel() {
     const { isOn } = powerStore();
 
     return (
-        <div>
-            <Physical top='58vmin' left='53.2vmin' >
-                { loaded && isOn ? 'w: ' + pokemon.weight / 10 + 'kg' : '' }
+        <Template top={55.5} left={52}>
+            <Physical brightness={isOn ? 1.4 : .5}>
+                {loaded && isOn ? 'w: ' + pokemon.weight / 10 + 'kg' : ''}
             </Physical>
 
-            <Physical top='58vmin' left='69.3vmin' >
-                { loaded && isOn ? 'h: ' + pokemon.height / 10 + 'm' : '' }
+            <Physical brightness={isOn ? 1.4 : .5}>
+                {loaded && isOn ? 'h: ' + pokemon.height / 10 + 'm' : ''}
             </Physical>
-        </div>
+        </Template>
     )
 };
 

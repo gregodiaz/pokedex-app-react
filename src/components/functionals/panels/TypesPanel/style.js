@@ -1,23 +1,26 @@
 import styled from 'styled-components';
 
-import colors from '../../../../constants/colors'
+import colors from '../../../../constants/colors';
 
 const Types= styled.div`
-    position: absolute;
-    height: 3.5vmin;
-    width: 18vmin;
-    border-radius: 5px;
+    align-items: center ;
+    border-radius: .3vmin;
+    display: flex;
+    font-family:'Titillium Web';
     font-size: 2.5vmin;
     font-weight: bold ;
-    text-align: center ;
-    font-family:'Titillium Web';
+    height: 3vmin;
+    justify-content: center;
+    width: 18vmin;
+    overflow: hidden;
 
-    background: ${colors.light};
-    border: 1px solid ${colors.dark};
+    background: ${colors.sky};
+    border: .01vmin solid ${colors.blue};
     color: ${colors.dark};
+    filter: brightness(${props => props.brightness}); 
 
-    top: ${props => props.top};
     left: ${props => props.left};
+    top: ${props => props.top};
 `;
 
 export default Types;

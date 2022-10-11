@@ -22,8 +22,8 @@ export default function SwitchInfoButton() {
                 brightness={isOn && moreInfo ? 2 : .5}
                 active={moreInfo}
                 content={'i'}
-                top={51}
-                left={73.4}
+                top={48.7}
+                left={74.4}
                 disabled={!isOn}
                 onClick={switchMoreInfo}
             />

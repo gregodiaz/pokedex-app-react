@@ -14,22 +14,8 @@ export default function ChangePokemonButtons() {
     return (
         <div>
             <ArrowButton
-                background={colors.blue}
-                border={0}
-                color={colors.sky}
-                content={'◀'}
-                left={30}
                 onClick={changeProfile}
-                top={54}
-            />
-
-            <ArrowButton
-                background={colors.blue}
-                border={0}
-                content={'▶'}
-                left={35}
-                onClick={changeProfile}
-                top={54}
+                content={'⟲'}
             />
         </div>
     )

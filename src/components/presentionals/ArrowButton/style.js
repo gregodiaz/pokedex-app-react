@@ -1,37 +1,29 @@
 import styled from 'styled-components';
 
+import colors from '../../../constants/colors';
+
 export const Arrow = styled.button`
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    background: #00000000;
-    height: 4vmin;
-    width: 4vmin;
-    border-radius: .5vmin;
-    background-size: contain;
-    font-size: 2vmin;
-    font-weight: bold;
+    height: 3vmin;
+    width: 3vmin;
+    border-radius: 50%;
+    font-size: 2.5vmin;
     border: none;
-    padding-top: 0;
-    box-shadow: -.3vmin .4vmin 0 .1vmin black;
-
-    height: ${props => props.size};
-    width: ${props => props.size};
-
-    top: ${props => props.top + 'vmin'};
-    left: ${props => props.left + 'vmin'};
-
-    color: ${props => props.color};
-    background: ${props => `url(${props.img})`};
-    background-image: ${props => `url(${props.image})`};
-    background: ${props => props.background};
+    margin: .3vmin;
+    padding: 0 .4vmin;
+    padding-bottom: .7vmin;
+    color: ${colors.darkPokedex};
+    box-shadow: inset .1vmin -.2vmin .4vmin .1vmin ${colors.dark};
+    background: ${colors.pokedex};
 
     &:active {
-        box-shadow: 0 0;
-        top: ${props => props.top + .3 + 'vmin'};
-        left: ${props => props.left - .4 + 'vmin'};
+        box-shadow: inset -.1vmin .2vmin .2vmin .1vmin ${colors.dark};
     }
     
     &:disabled {
-        color: black;
+        color: ${colors.darkPokedex};
     }
 `;

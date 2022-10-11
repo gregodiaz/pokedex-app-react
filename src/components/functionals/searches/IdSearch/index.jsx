@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import Search from './style';
 
+// import Template from '../../../presentionals/HigherTemplate';
+import Template from '../../../presentionals/FlushTemplate';
+
 import pokemonStore from '../../../../store/pokemonStore';
 import powerStore from '../../../../store/powerStore';
 
@@ -29,12 +32,15 @@ export default function IdSearch() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Search
-                disabled={!isOn}
-                placeholder={isOn ? idFormated : ''}
-                onChange={handleChange}
-            />
-        </form>
+        <Template top={49.5} left={18}>
+            <form onSubmit={handleSubmit}>
+                <Search
+                    disabled={!isOn}
+                    brightness={isOn ? 1.4 : .5}
+                    placeholder={isOn ? idFormated : ''}
+                    onChange={handleChange}
+                />
+            </form>
+        </Template>
     )
 };
